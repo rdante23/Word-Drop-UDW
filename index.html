@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak & Score - Word Game</title>
+    <meta name="theme-color" content="#2ecc71">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="level-display">Level: <span id="current-level">1</span></div>
+        <div id="score-display">Score: <span id="score">0</span></div>
+        <div id="word-display">-</div>
+        <div id="feedback"></div>
+        <div id="mic-status">Press START and say the word</div>
+        
+        <div class="controls">
+            <button id="start-btn">START</button>
+            <button id="next-btn" disabled>NEXT WORD</button>
+        </div>
+    </div>
+
+    <div id="level-selection">
+        <h1>Select Difficulty</h1>
+        <button data-level="1">Level 1 (Easy)</button>
+        <button data-level="2">Level 2</button>
+        <button data-level="3">Level 3</button>
+        <button data-level="4">Level 4</button>
+        <button data-level="5">Level 5 (Hard)</button>
+    </div>
+
+    <div id="game-over">
+        <h2>🏆 Game Complete! 🏆</h2>
+        <div id="final-score">Your Score: <span>0</span></div>
+        <button id="play-again">PLAY AGAIN</button>
+        <button id="exit-game">EXIT</button>
+    </div>
+
+    <!-- Audio elements for feedback -->
+    <audio id="correct-sound" src="/sounds/correct.mp3" preload="auto"></audio>
+    <audio id="wrong-sound" src="/sounds/wrong.mp3" preload="auto"></audio>
+
+    <script src="/script.js"></script>
+    
+    <!-- PWA installation prompt support -->
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
+        // Show install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // You can show your custom install button here
+        });
+    </script>
+</body>
+</html>
