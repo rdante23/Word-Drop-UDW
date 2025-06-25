@@ -1,0 +1,144 @@
+:root {
+    --primary: #2ecc71;
+    --secondary: #3498db;
+    --error: #e74c3c;
+    --background: #f0f8ff;
+    --text: #2c3e50;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    touch-action: manipulation;
+}
+
+#game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    display: none; /* Hidden until level selection */
+}
+
+#word-display {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    min-height: 4rem;
+}
+
+#feedback {
+    font-size: 1.5rem;
+    min-height: 2rem;
+    margin: 1rem 0;
+}
+
+#mic-status {
+    color: #7f8c8d;
+    margin: 1rem 0;
+}
+
+.controls {
+    margin: 2rem 0;
+}
+
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: transform 0.2s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+#level-selection {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#level-selection h1 {
+    color: white;
+    margin-bottom: 2rem;
+}
+
+#level-selection button {
+    width: 80%;
+    max-width: 300px;
+    margin: 10px;
+    background-color: rgba(255,255,255,0.9);
+    color: var(--text);
+}
+
+#game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#game-over h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#final-score {
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+
+#final-score span {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.correct {
+    color: var(--primary);
+}
+
+.incorrect {
+    color: var(--error);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    #word-display {
+        font-size: 2rem;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
