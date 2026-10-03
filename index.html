@@ -5,16 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speak & Score - Word Game</title>
     <meta name="theme-color" content="#2ecc71">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <div id="game-container">
-        <div id="level-display">Level: <span id="current-level">1</span></div>
-        <div id="score-display">Score: <span id="score">0</span></div>
-        <div id="word-display">-</div>
-        <div id="feedback"></div>
+        <div class="game-header">
+            <div id="level-display">Level: <span id="current-level">1</span></div>
+            <div id="score-display">Score: <span id="score">0</span></div>
+        </div>
+
+        <div class="word-card">
+            <div id="word-display">-</div>
+            <div id="feedback"></div>
+        </div>
+
         <div id="mic-status">Press START and say the word</div>
         
         <div class="controls">
