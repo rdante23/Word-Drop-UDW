@@ -66,7 +66,7 @@ function initSpeechRecognition() {
         feedback.textContent = `You said: "${spokenWord}"`;
         
         if (spokenWord === currentWord.toLowerCase()) {
-            feedback.className = "correct";
+            feedback.className = "correct animate-bounce";
             feedback.textContent += " ✅ Correct!";
             score += currentLevel * 10; // Higher levels give more points
             scoreDisplay.textContent = score;
@@ -79,7 +79,7 @@ function initSpeechRecognition() {
                 correctSound.play().catch(e => console.log("Audio error:", e));
             }
         } else {
-            feedback.className = "incorrect";
+            feedback.className = "incorrect animate-shake";
             feedback.textContent += " ❌ Try again!";
             startBtn.disabled = false;
             
@@ -90,6 +90,11 @@ function initSpeechRecognition() {
             }
         }
         
+        // Remove animation classes after they finish so they can be re-triggered
+        setTimeout(() => {
+            feedback.classList.remove("animate-bounce", "animate-shake");
+        }, 1000);
+
         wordsAttempted++;
         if (wordsAttempted >= maxWords) {
             endGame();
